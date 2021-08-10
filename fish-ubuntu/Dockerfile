@@ -6,14 +6,13 @@ ARG USERNAME=kanitsharma
 
 # SETUP USER
 RUN apt update && \
-    apt install -y sudo fish && \
+    apt install -y sudo && \
     adduser --quiet --disabled-password --shell /bin/bash --home /home/${USERNAME} --gecos "User" ${USERNAME} && \
     echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} && \
     chmod 0440 /etc/sudoers.d/${USERNAME}
 
-# INSTALL DEV PACKAGES
-RUN apt update && \
-    apt install -y curl git-core  && \
+# INSTALL FISH AND STARSHIP-PROMPT
+RUN apt install -y curl git-core fish  && \
     sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 
 USER ${USERNAME}

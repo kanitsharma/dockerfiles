@@ -1,4 +1,4 @@
-# dotfiles
+# dockerfiles
 
 > My dockerfiles for multiple dev environments
 
